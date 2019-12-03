@@ -4,8 +4,8 @@ export class StoreAccess extends Component {
 	constructor(props) {
 		super(props);
 		this.selectors = {
-			product: (storeState) => storeState.modelData.products[0];
-			state: (storeState) => storeState.stateData;
+			product: (storeState) => storeState.modelData.products[0],
+			state: (storeState) => storeState.stateData
 		}
 	}
 	render() {
