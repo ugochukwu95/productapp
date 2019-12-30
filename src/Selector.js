@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Link, Route, Switch, Redirect } from "react-ro
 // import { RouteInfo } from "./RouteInfo";
 import { ToggleLink } from "./ToggleLink";
 import { RoutedDisplay } from "./store/RoutedDisplay";
+import {IsolatedTable} from "./IsolatedTable";
+import { IsolatedEditor } from "./IsolatedEditor";
 
 export class Selector extends Component {
 	/*constructor(props) {
@@ -31,11 +33,14 @@ export class Selector extends Component {
 			<div className="container-fluid">
 				<div className="row">
 					<div className="col-2">
+						<ToggleLink to="/isolated">Isolated Data</ToggleLink>
 						{ routes.map(r => <ToggleLink key={ r.url } to={ r.url }>
 							{ r.name }</ToggleLink>)}
 					</div>
 					<div className="col">
 						<Switch>
+							<Route path="/isolated" component={ IsolatedTable } exact={ true } />
+							<Route path="/isolated/:mode/:id?" component={ IsolatedEditor } />
 							{ routes.map( r => <Route key={ r.url }
 path={ `/:datatype(${r.datatype})/:mode?/:id?`}
 component={ RoutedDisplay(r.datatype)} />)}
